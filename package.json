@@ -21,6 +21,6 @@
     "vite-aliases": "^0.8.7"
   },
   "dependencies": {
-    "route-parser": "0.0.5"
+    "route-parser": "^0.0.5"
   }
 }

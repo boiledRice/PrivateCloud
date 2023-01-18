@@ -1,7 +1,7 @@
  const appConstants = {
     routes: {
         index: '/',
-        posts: '/posts',
+        files: '/files',
         users: '/users',
     },
     search: {
