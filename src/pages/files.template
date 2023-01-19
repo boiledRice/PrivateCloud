@@ -1,1 +1,4 @@
-<div><p>Files template<p></div>
+<div>
+<h1 id="dir-path">Filepath not avialable</h1>
+<file-tile file-name='test.test' file-location='test/'><>
+</div>
