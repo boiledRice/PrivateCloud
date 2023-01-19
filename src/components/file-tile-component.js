@@ -1,20 +1,20 @@
 import {goTo} from '../router'
 
 class FileTile extends HTMLElement{
-    fileType = '';
-    fileName = '';
-    fileLocation = '';
     constructor(){
         super();
-        const shadow = this.attachShadow({mode: open})
+        const shadow = this.attachShadow({mode: 'open'})
         const container = document.createElement('div')
         container.setAttribute('class','file-tile-container')
         const image = document.createElement('img')
+        const alias = document.createElement('h3')
+        alias.textContent=this.getAttribute('file-name')
         container.appendChild(image)
+        container.appendChild(alias)
         const style = document.createElement('style')
         this.selected = false;
         style.textContent = `
-            div.file-tile-container{
+            .file-tile-container{
                 width = 100px;
                 height = 100px;
             }
