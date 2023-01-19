@@ -3,39 +3,53 @@ import {goTo} from '../router'
 class FileTile extends HTMLElement{
     constructor(){
         super();
-        const shadow = this.attachShadow({mode: 'open'})
-        const container = document.createElement('div')
-        container.setAttribute('class','file-tile-container')
-        const image = document.createElement('img')
-        const alias = document.createElement('h3')
-        alias.textContent=this.getAttribute('file-name')
-        container.appendChild(image)
-        container.appendChild(alias)
-        const style = document.createElement('style')
         this.selected = false;
+        const shadow = this.attachShadow({mode: 'open'});
+        const container = document.createElement('div');
+        container.setAttribute('class','container')
+        container.innerHTML =`\
+            <img class='file_icon' src='./../src/images/file_icon.svg'/>
+        `
+        const fileNameWrapper = document.createElement('div')
+        fileNameWrapper.setAttribute('class','file_name_wrapper')
+        fileNameWrapper.innerText='tsadasdsadasdassadsae'
+        container.appendChild(fileNameWrapper)
+
+        const style = document.createElement('style')
         style.textContent = `
-            .file-tile-container{
-                width = 100px;
-                height = 100px;
+            .container{
+                padding: 20px;
+                max-width: 100px;
+            }
+            .file_icon{
+                height : 100px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .file_name_wrapper{
+                word-wrap: break-word;
+                text-align : center
             }
         `
         shadow.appendChild(style)
         shadow.appendChild(container)
     }
+    static get observedAttributes(){
+        return["file_name"];
+    }
     connectedCallback(){
         const shadow = this.shadowRoot;
-        const fileName = this.getAttribute('file-name')
-        const fileLocation = this.getAttribute('file-location')
-        const container = shadow.querySelector('div')
-        container.addEventListener('click',this.onClick)
+        shadow.querySelector('.file_name_wrapper').innerText = this.getAttribute('file_name');
     }
 
-    onClick = (e) => {
-        e.preventDefault()
-        if(!this.selected){
-            const { pathname: path} = new URL(e.target.fileLocation)
-            goTo(path)
-        }
-    }
+
+    // onClick = (e) => {
+    //     e.preventDefault()
+    //     if(!this.selected){
+    //         const { pathname: path} = new URL(e.target.fileLocation)
+    //         goTo(path)
+    //     }
+    // }
 }
 customElements.define('file-tile', FileTile)

@@ -1,7 +1,7 @@
-import baseApi from './baseApi'
+import dbApi from './dbApi'
 
-export const getFiles = (location) =>{
-    return baseApi.get(`/files?location=${path}`)
+export const getFiles = (path) =>{
+    return dbApi.get(`/files?location=${path}`)
 }
 
 export default {

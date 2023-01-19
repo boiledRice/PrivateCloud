@@ -9,6 +9,6 @@ export const setFile = (file) =>{
 }
 
 export default(
-    getPost,
-    setPost
+    getFile,
+    setFile
 )
