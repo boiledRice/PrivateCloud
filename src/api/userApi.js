@@ -1,16 +1,7 @@
 import dbApi from './dbApi'
 
 export const getUser = (username, password) =>{
-    // return dbApi.get(`/users?username=${username}&password=${password}`);
-    const request = dbApi.get(`/users?username=${username}&password=${password}`)
-    request.then((users) => {
-        return 1;
-        // if(users.length1=1){
-        //   return false;
-        // }else{
-        //   return users[0].userid;
-        // }
-      });
+    return dbApi.get(`/users?username=${username}&password=${password}`);
 }
 
 // export const putDir = (folderName,path) =>{

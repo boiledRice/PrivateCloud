@@ -1,12 +1,13 @@
 // import { goTo } from "../router";
 import { getUser } from "../api/userApi";
+import { goTo } from "../router";
 
 class LoginForm extends HTMLElement {
 
   constructor() {
     super();
-    // this.selected = false;
     const shadow = this.attachShadow({ mode: "open" });
+
     const login = function tryLogIn(){
       const username = shadow.getElementById('username_input').value;
       const password = shadow.getElementById('password_input').value;
@@ -15,10 +16,13 @@ class LoginForm extends HTMLElement {
         if(user.length!=1){
           shadow.getElementById('login_error_container').innerText='Authentication error';
         }else{
-          shadow.getElementById('login_error_container').innerText=user[0].userid;
+          const userid = user[0].userid;
+          localStorage.setItem('actualUserId',userid);
+          goTo('/files');
         }
       });
     }
+
     const container = document.createElement("div");
     container.setAttribute("class", "main_container");
     container.innerHTML = `
