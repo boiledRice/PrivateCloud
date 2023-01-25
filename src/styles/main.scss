@@ -7,5 +7,55 @@
     display: flex;
     justify-content: center;
     // align-items:center;
+}
 
+//app elements
+
+//create-folder-dialog
+
+
+//dir-tile
+dir-tile .container{
+    padding: 20px;
+    max-width: 100px;
+}
+dir-tile .dir_icon{
+    width: 100px;
+    display: block;
+}
+dir-tile .dir_name_wrapper{
+    word-wrap: break-word;
+    text-align : center
+}
+
+//file-tile
+file-tile .main_container{
+    padding: 20px;
+    max-width: 100px;
+}
+file-tile .file_icon{
+    height : 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+file-tile .file_name_container{
+    word-wrap: break-word;
+    text-align : center
+}
+
+//files-grid
+files-grid .file-grid{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+files-grid .folder_up{
+    width:70px;
+    padding:20px;
+}
+
+//nav-link
+nav-link .nav_link_wrapper{
+    padding: 20px;
 }

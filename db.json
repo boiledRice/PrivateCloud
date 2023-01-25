@@ -1,26 +1,43 @@
 {
     "files": [
         {
-            "name": "test.test",
-            "path": "/"
+            "name": "test.test"
+            ,"path": "/"
+            ,"userid": 0
         },
         {
-            "name": "test2.test",
-            "path": "/"
+            "name": "test2.test"
+            ,"path": "/"
+            ,"userid": 0
         },
         {
-            "name": "test3.test",
-            "path": "/test_folder/"
+            "name": "test3.test"
+            ,"path": "/test_folder/"
+            ,"userid": 0
         }
-    ],
-    "directories": [
+    ]
+    ,"directories": [
         {
-            "name": "test_folder",
-            "path": "/"
+            "name": "test_folder"
+            ,"path": "/"
+            ,"userid": 0
         },
         {
-            "name": "ahoj",
-            "path": "/test_folder/"
+            "name": "ahoj"
+            ,"path": "/test_folder/"
+            ,"userid": 0
+        }
+    ]
+    ,"users": [
+        {
+            "username"  : "user"
+            ,"password" : "password"
+            ,"userid"   : 0
+        },
+        {
+            "username"  : "boiledRice"
+            ,"password" : "boiledRice"
+            ,"userid"   : 1
         }
     ]
 }
