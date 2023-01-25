@@ -37,18 +37,18 @@ class FilesGrid extends HTMLElement {
 
     //style
     const style = document.createElement("style");
-    // style.textContent = `
-    //         .file-grid{
-    //             display: flex;
-    //             flex-wrap: wrap;
-    //             flex-direction: row;
-    //         }
-    //         .folder_up{
-    //             width:70px;
-    //             padding:20px;
-    //         }
-    //     `;
-    // shadow.appendChild(style);
+    style.textContent = `
+            .file-grid{
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+            }
+            .folder_up{
+                width:70px;
+                padding:20px;
+            }
+        `;
+    shadow.appendChild(style);
     shadow.appendChild(pathHeader);
     shadow.appendChild(container);
     shadow.appendChild(createDirDialog);

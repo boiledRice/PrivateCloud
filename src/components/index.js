@@ -3,3 +3,4 @@ import "./dir-tile-component";
 import "./files-grid-component";
 import "./nav-link-component";
 import "./create-folder-dialog-component";
+import "./login-form-component";
