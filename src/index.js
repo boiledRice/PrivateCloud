@@ -1,5 +1,5 @@
-import './styles/main.scss'
-import initRouter from './router'
-import './components'
+import "./styles/main.scss";
+import initRouter from "./router";
+import "./components";
 
-initRouter()
+initRouter();
