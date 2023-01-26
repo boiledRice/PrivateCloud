@@ -65,8 +65,7 @@ class FilesBrowser extends HTMLElement {
         this.pathHeader.setAttribute("path",this.activePath);
         this.activeFile = this.filesGrid.activeFile;
         // this.fileView.setAttribute("file_name",this.activeFile.name);
-        this.fileView.setAttribute("content",this.activeFile.name);
-        // this.fileView.setAttribute("content","test");
+        this.fileView.setAttribute("content",this.activeFile.content);
         // this.fileView.displayFile(this.activeFile);
     }
     )
