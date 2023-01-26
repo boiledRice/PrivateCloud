@@ -12,27 +12,26 @@ class FileTile extends HTMLElement {
         `;
     const fileNameWrapper = document.createElement("div");
     fileNameWrapper.setAttribute("class", "file_name_container");
-    // fileNameWrapper.innerText = "tsadasdsadasdassadsae";
     container.appendChild(fileNameWrapper);
 
-    // const style = document.createElement("style");
-    // style.textContent = `
-    //         .main_container{
-    //             padding: 20px;
-    //             max-width: 100px;
-    //         }
-    //         .file_icon{
-    //             height : 100px;
-    //             display: block;
-    //             margin-left: auto;
-    //             margin-right: auto;
-    //         }
-    //         .file_name_container{
-    //             word-wrap: break-word;
-    //             text-align : center
-    //         }
-    //     `;
-    // shadow.appendChild(style);
+    const style = document.createElement("style");
+    style.textContent = `
+            .main_container{
+                padding: 20px;
+                max-width: 100px;
+            }
+            .file_icon{
+                height : 100px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .file_name_container{
+                word-wrap: break-word;
+                text-align : center
+            }
+        `;
+    shadow.appendChild(style);
     shadow.appendChild(container);
   }
   static get observedAttributes() {
@@ -40,7 +39,7 @@ class FileTile extends HTMLElement {
   }
   connectedCallback() {
     const shadow = this.shadowRoot;
-    shadow.querySelector(".file_name_wrapper").innerText =
+    shadow.querySelector(".file_name_container").innerText =
       this.getAttribute("file_name");
   }
 

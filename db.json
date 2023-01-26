@@ -3,16 +3,19 @@
         {
             "name": "test.test"
             ,"path": "/"
+            ,"content": "test content"
             ,"userid": 0
         },
         {
             "name": "test2.test"
             ,"path": "/"
+            ,"content": "test content"
             ,"userid": 0
         },
         {
             "name": "test3.test"
             ,"path": "/test_folder/"
+            ,"content": "test content"
             ,"userid": 0
         }
     ]

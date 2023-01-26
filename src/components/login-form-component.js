@@ -1,6 +1,6 @@
-// import { goTo } from "../router";
 import { getUser } from "../api/userApi";
 import { goTo } from "../router";
+import "./../styles/loginform.scss"
 
 class LoginForm extends HTMLElement {
 
@@ -25,6 +25,7 @@ class LoginForm extends HTMLElement {
 
     const container = document.createElement("div");
     container.setAttribute("class", "main_container");
+    container.setAttribute("part", "main");
     container.innerHTML = `
             <h2>Username</h2>
             <input id="username_input"/>

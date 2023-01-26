@@ -1,44 +1,18 @@
 import { getDirectories } from "../api/filesFoldersApi";
 import { getFiles } from "../api/filesFoldersApi";
-import { getFile, setFile, deleteAllFiles } from "../service/files.js";
 import { setDir } from "../service/directories.js";
 
-let path; //aktualne prohlizena slozka
-let container; //hlavni container
-let pathHeader; //nadpis, obsahuje Path
-let createFolderBtn; //
-
+let activeFile;
 class FilesGrid extends HTMLElement {
   constructor() {
     super();
-
-    //nastaveni promenne Path
-    const shadow = this.attachShadow({ mode: "open" });
-    if (this.getAttribute("path") === null) {
-      path = "/";
-      this.setAttribute("path", path);
-    } else {
-      path = this.getAttribute("path");
-    }
-
-    pathHeader = document.createElement("h1");
-    pathHeader.setAttribute("id", "path_header");
-    pathHeader.innerText = path;
-
-    //main container
-    container = document.createElement("div");
-    container.setAttribute("class", "file-grid");
-
-    //create folder dialog - hidden for default
-    const createDirDialog = document.createElement("create-dir-dialog");
-    createDirDialog.shadowRoot
-      .getElementById("cancel_btn")
-      .addEventListener("click", (e) => this.hideElement(createDirDialog));
-
-    //style
+    this.shadow = this.attachShadow({ mode: "open" });
+    // const styleLink = document.createElement('style');
+    // styleLink.innerText = '@import "./../styles/filebrowser.scss"';
+    // shadow.appendChild(styleLink);
     const style = document.createElement("style");
     style.textContent = `
-            .file-grid{
+            .main_container{
                 display: flex;
                 flex-wrap: wrap;
                 flex-direction: row;
@@ -48,14 +22,25 @@ class FilesGrid extends HTMLElement {
                 padding:20px;
             }
         `;
-    shadow.appendChild(style);
-    shadow.appendChild(pathHeader);
-    shadow.appendChild(container);
-    shadow.appendChild(createDirDialog);
-    this.render();
-    // const createDirButton = documnent.createElement('button')
-    // createDirButton.innerText = 'create directory'
-    // createDirButton.addEventListener(this.click)
+    this.shadow.appendChild(style);
+
+    //main container
+    this.container = document.createElement("div");
+    this.container.setAttribute("class", "main_container");
+
+    //create folder dialog - hidden for default
+    // const createDirDialog = document.createElement("create-dir-dialog");
+    // createDirDialog.shadowRoot
+    //   .getElementById("cancel_btn")
+    //   .addEventListener("click", (e) => this.hideElement(createDirDialog));
+
+    
+    this.shadow.appendChild(this.container);
+    this.path=this.getAttribute("path");
+  }
+
+  connectedCallback(){
+    this.path=this.getAttribute("path");
   }
 
   static get observedAttributes() {
@@ -65,14 +50,13 @@ class FilesGrid extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     const shadow = this.shadowRoot;
     if (name == "path") {
-      path = this.getAttribute("path");
-      this.render();
+      this.path=newValue;
+      this.renderContent(this.path);
     }
   }
 
-  render() {
-    container.innerHTML = "";
-    pathHeader.innerText = path;
+  renderContent(path) {
+    this.container.innerHTML = "";
 
     //pokud slozka neni korenova, pridame tlacitko 'o slozku vys'
     if (path.substring(0, path.length - 1).indexOf("/") > -1) {
@@ -89,7 +73,7 @@ class FilesGrid extends HTMLElement {
           )
         );
       });
-      container.appendChild(folderUp);
+      this.container.appendChild(folderUp);
     }
     //getting folders from REST API
     const folders = getDirectories(path);
@@ -98,11 +82,12 @@ class FilesGrid extends HTMLElement {
       folders.forEach((folder) => {
         setDir(folder);
         const dirElement = document.createElement("dir-tile");
+        dirElement.setAttribute("class", "dir-tile");
         dirElement.setAttribute("dir_name", folder.name);
         dirElement.addEventListener("click", (e) => {
           this.changePath(path + folder.name + "/");
         });
-        container.appendChild(dirElement);
+        this.container.appendChild(dirElement);
       });
     });
 
@@ -114,12 +99,18 @@ class FilesGrid extends HTMLElement {
         // setFile(file)
         const fileElement = document.createElement("file-tile");
         fileElement.setAttribute("file_name", file.name);
-        container.appendChild(fileElement);
+        fileElement.file = file;
+        fileElement.addEventListener("click", (e) => {
+          // this.activeFile = fileElement.file;
+          this.activeFile = fileElement.file;
+        });
+        this.container.appendChild(fileElement);
       });
     });
   }
   changePath(path) {
     this.setAttribute("path", path);
+    this.path=path;
   }
   hideElement(element) {
     element.style.display = "none";
