@@ -1,6 +1,3 @@
-import { goTo } from "../router";
-// import "../styles/filebrowser.scss"
-
 class dirTile extends HTMLElement {
   constructor() {
     super();
@@ -23,10 +20,9 @@ class dirTile extends HTMLElement {
         `;
     shadow.appendChild(style);
 
-
     const container = document.createElement("div");
     container.setAttribute("class", "container");
-    container.innerHTML = `\
+    container.innerHTML = `
             <img class='dir_icon' src='./../src/images/dir_icon.svg'/>
         `;
     const dirNameWrapper = document.createElement("div");
@@ -34,7 +30,6 @@ class dirTile extends HTMLElement {
     dirNameWrapper.innerText = "undefined";
     container.appendChild(dirNameWrapper);
 
-    
     shadow.appendChild(container);
   }
   static get observedAttributes() {

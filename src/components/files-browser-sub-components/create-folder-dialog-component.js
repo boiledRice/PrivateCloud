@@ -9,22 +9,6 @@ class createDirDialog extends HTMLElement {
             <button>create</button> 
             <button id= 'cancel_btn'>cancel</button>
         `;
-    //  const style = document.createElement('style')
-    // style.textContent = `
-    //     .container{
-    //         padding: 20px;
-    //         max-width: 100px;
-    //     }
-    //     .dir_icon{
-    //         width: 100px;
-    //         display: block;
-    //     }
-    //     .dir_name_wrapper{
-    //         word-wrap: break-word;
-    //         text-align : center
-    //     }
-    // `
-    // shadow.appendChild(style)
     shadow.appendChild(container);
   }
   // static get observedAttributes(){
@@ -35,4 +19,4 @@ class createDirDialog extends HTMLElement {
   // shadow.querySelector('.dir_name_wrapper').innerText = this.getAttribute('dir_name');
   // }
 }
-customElements.define("create-dir-dialog", createDirDialog);
+// customElements.define("create-dir-dialog", createDirDialog);

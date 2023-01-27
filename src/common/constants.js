@@ -1,15 +1,9 @@
- const appConstants = {
-    routes: {
-        index: '/',
-        files: '/files',
-        login: '/login',
-    },
-    search: {
-       types: {
-           post: 'post',
-           user: 'user'
-       }
-    }
-}
+const appConstants = {
+  routes: {
+    index: "/",
+    files: "/files",
+    login: "/login",
+  },
+};
 
-export default appConstants
+export default appConstants;

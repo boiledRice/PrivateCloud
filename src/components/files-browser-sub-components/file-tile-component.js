@@ -1,5 +1,3 @@
-import { goTo } from "../router";
-
 class FileTile extends HTMLElement {
   constructor() {
     super();
@@ -7,7 +5,7 @@ class FileTile extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
     const container = document.createElement("div");
     container.setAttribute("class", "main_container");
-    container.innerHTML = `\
+    container.innerHTML = `
             <img class='file_icon' src='./../src/images/file_icon.svg'/>
         `;
     const fileNameWrapper = document.createElement("div");
@@ -42,13 +40,5 @@ class FileTile extends HTMLElement {
     shadow.querySelector(".file_name_container").innerText =
       this.getAttribute("file_name");
   }
-
-  // onClick = (e) => {
-  //     e.preventDefault()
-  //     if(!this.selected){
-  //         const { pathname: path} = new URL(e.target.fileLocation)
-  //         goTo(path)
-  //     }
-  // }
 }
 customElements.define("file-tile", FileTile);

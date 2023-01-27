@@ -1,12 +1,13 @@
-import { getDirectories } from "../api/filesFoldersApi";
-import { getFiles } from "../api/filesFoldersApi";
-import { setDir } from "../service/directories.js";
+import { getDirectories } from "../../api/filesFoldersApi";
+import { getFiles } from "../../api/filesFoldersApi";
+import { setDir } from "../../service/directories.js";
 
-let activeFile;
 class FilesGrid extends HTMLElement {
   constructor() {
     super();
+    this.activeFile = null;
     this.shadow = this.attachShadow({ mode: "open" });
+    // nefunguje - 404
     // const styleLink = document.createElement('style');
     // styleLink.innerText = '@import "./../styles/filebrowser.scss"';
     // shadow.appendChild(styleLink);
@@ -28,19 +29,12 @@ class FilesGrid extends HTMLElement {
     this.container = document.createElement("div");
     this.container.setAttribute("class", "main_container");
 
-    //create folder dialog - hidden for default
-    // const createDirDialog = document.createElement("create-dir-dialog");
-    // createDirDialog.shadowRoot
-    //   .getElementById("cancel_btn")
-    //   .addEventListener("click", (e) => this.hideElement(createDirDialog));
-
-    
     this.shadow.appendChild(this.container);
-    this.path=this.getAttribute("path");
+    this.path = this.getAttribute("path");
   }
 
-  connectedCallback(){
-    this.path=this.getAttribute("path");
+  connectedCallback() {
+    this.path = this.getAttribute("path");
   }
 
   static get observedAttributes() {
@@ -50,7 +44,7 @@ class FilesGrid extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     const shadow = this.shadowRoot;
     if (name == "path") {
-      this.path=newValue;
+      this.path = newValue;
       this.renderContent(this.path);
     }
   }
@@ -85,6 +79,7 @@ class FilesGrid extends HTMLElement {
         dirElement.setAttribute("class", "dir-tile");
         dirElement.setAttribute("dir_name", folder.name);
         dirElement.addEventListener("click", (e) => {
+          this.activeFile = null;
           this.changePath(path + folder.name + "/");
         });
         this.container.appendChild(dirElement);
@@ -110,7 +105,7 @@ class FilesGrid extends HTMLElement {
   }
   changePath(path) {
     this.setAttribute("path", path);
-    this.path=path;
+    this.path = path;
   }
   hideElement(element) {
     element.style.display = "none";
