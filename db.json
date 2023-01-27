@@ -21,7 +21,18 @@
         ,{
             "name": "svit-mesicku.txt"
             ,"path": "/"
-            ,"content": "Svit, mesicku, polehoucku<br>skrz ten husty mrak;<br>jak pak se ti Brixen libi?<br>Neskared se tak!<br>Nepospichej, pozastav se,<br>nechod jeste spat,<br>abych s tebou jen chvilinku moh'<br>diskurirovat.<br>Nejsem zdejsi, muj mesicku!<br>tot znas podle kriku;<br>neutikej, nejsem ,,treu und bieder--,<br>jsem zde jen ve cviku."
+            ,"content": "Svit, mesicku, polehoucku
+skrz ten husty mrak;
+jak pak se ti Brixen libi?
+Neskared se tak!
+Nepospichej, pozastav se,
+nechod jeste spat,
+abych s tebou jen chvilinku moh'
+diskurirovat.
+Nejsem zdejsi, muj mesicku!
+tot znas podle kriku;
+neutikej, nejsem ,,treu und bieder--,
+jsem zde jen ve cviku."
             ,"userid": 1
         }
     ]
@@ -30,8 +41,8 @@
             "name": "test_folder"
             ,"path": "/"
             ,"userid": 0
-        }
-        ,{
+        },
+        {
             "name": "ahoj"
             ,"path": "/test_folder/"
             ,"userid": 0
