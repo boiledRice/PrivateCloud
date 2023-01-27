@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "vite",
-    "build": "cross-env BUILD_TYPE=dev vite build",
+    "build": "cross-env BUILD_TYPE=dev vite build --base=/~shpd00/sp2/",
     "serve": "vite preview --port 3000",
     "build-prod": "cross-env BUILD_TYPE=prod vite build",
     "server": "json-server --port 1111 ./db.json",
