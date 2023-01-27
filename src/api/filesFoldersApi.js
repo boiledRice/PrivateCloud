@@ -17,7 +17,7 @@ export const getDirectories = (path) => {
 
 export const getFileContent = (file) => {
   return dbApi.get(
-    `/files_content?fileid=${file.fileid}`
+    `/files-content?fileid=${file.fileid}`
   );
 }
 
