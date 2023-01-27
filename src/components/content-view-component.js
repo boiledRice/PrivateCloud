@@ -8,13 +8,34 @@ class ContentView extends HTMLElement {
     super();
     // this.setAttribute("content","");
     this.shadow = this.attachShadow({ mode: "open" });
+
+    const style = document.createElement("style");
+    style.textContent = `
+            .main_container{
+                padding: 2em;
+            }
+            // .file_name{
+            // }
+        `;
+    this.shadow.appendChild(style);
+
     this.container = document.createElement("div");
     this.container.setAttribute("class", "main_container");
+
+    this.fileName = document.createElement("h2");
+    this.fileName.setAttribute("class", "file_name");
+    this.content_container = document.createElement("div");
+    this.content_container.setAttribute("class", "content");
+
+    this.container.appendChild(this.fileName);
+    this.container.appendChild(this.content_container);
+
     this.shadow.appendChild(this.container);
   }
   displayFile(file){
-    const container = this.getElementsByClassName("main_container")[0]
-    container.innerHTML = file.content;
+    // const container = this.getElementsByClassName("content")[0]
+    this.fileName.innerText = file.name;
+    this.content_container.innerHTML = file.content;
   }
   static get observedAttributes() {
     return ["content"];
@@ -23,7 +44,7 @@ class ContentView extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     const shadow = this.shadowRoot;
     if (name == "content") {
-      this.container.innerText=newValue;
+      this.container.innerHTML=newValue;
     }
   }
   // connectedCallback() {
