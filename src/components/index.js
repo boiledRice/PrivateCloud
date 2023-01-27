@@ -3,6 +3,8 @@ import "./dir-tile-component";
 import "./nav-link-component";
 import "./create-folder-dialog-component";
 import "./login-form-component";
+import "./user-tile-component.js";
+import "./users-list-component.js";
 
 
 import "./files-grid-component";

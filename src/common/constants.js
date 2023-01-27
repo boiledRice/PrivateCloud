@@ -2,7 +2,7 @@
     routes: {
         index: '/',
         files: '/files',
-        users: '/users',
+        login: '/login',
     },
     search: {
        types: {

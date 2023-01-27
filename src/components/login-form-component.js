@@ -1,5 +1,6 @@
 import { getUser } from "../api/userApi";
 import { goTo } from "../router";
+import { addUser,switchUser,getActiveUsers } from "../service/activeUsers";
 import "./../styles/loginform.scss"
 
 class LoginForm extends HTMLElement {
@@ -18,26 +19,36 @@ class LoginForm extends HTMLElement {
         }else{
           const userid = user[0].userid;
           localStorage.setItem('actualUserId',userid);
-          goTo('/files');
+          addUser(user[0]);
+          switchUser(user[0].username);
         }
       });
     }
 
     const container = document.createElement("div");
     container.setAttribute("class", "main_container");
-    container.setAttribute("part", "main");
+    container.setAttribute("part", "main_container");
     container.innerHTML = `
-            <h2>Username</h2>
-            <input id="username_input"/>
-            <h2>Password</h2>
-            <input id="password_input"/>
-            <div id="login_error_container"></div>
+            <h2>USERNAME</h2>
+            <input id="username_input" part="input"/>
+            <h2>PASSWORD</h2>
+            <input id="password_input" part="input"/>
+            <div id="login_error_container" part="login_error_container"></div>
     `;
     const logInButton = document.createElement("button");
     logInButton.setAttribute("class", "log_in_button");
+    logInButton.setAttribute("part", "log_in_button");
     logInButton.innerText = 'Log in'
     logInButton.addEventListener("click", login )
     container.appendChild(logInButton);
+    if(getActiveUsers().length>0){
+      const usersListContainer = document.createElement("div")
+      usersListContainer.innerHTML=`
+        <h3>Or continue as:</h3>
+        <users-list></users-list>
+      `;
+      container.appendChild(usersListContainer);
+    }
     shadow.appendChild(container);
   }
   // static get observedAttributes() {

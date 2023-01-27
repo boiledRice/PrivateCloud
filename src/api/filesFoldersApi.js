@@ -1,7 +1,8 @@
+import { getActualUser } from '../service/activeUsers'
 import dbApi from './dbApi'
 
 export const getFiles = (path) =>{
-    return dbApi.get(`/files?path=${path}&userid=${localStorage.getItem('actualUserId')}`)
+    return dbApi.get(`/files?path=${path}&userid=${getActualUser().userid}`)
 }
 
 export const putDir = (folderName,path) =>{
@@ -9,7 +10,7 @@ export const putDir = (folderName,path) =>{
 }
 
 export const getDirectories = (path) =>{
-    return dbApi.get(`/directories?path=${path}&userid=${localStorage.getItem('actualUserId')}`)
+    return dbApi.get(`/directories?path=${path}&userid=${getActualUser().userid}`)
 }
 
 export default {

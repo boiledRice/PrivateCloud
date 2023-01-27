@@ -1,0 +1,29 @@
+    :host-context(login-form) .main_container{
+    // padding:2em;
+    // text-align: center;
+    // justify-content: center;
+    display: flex;
+    background-color: aqua;
+    flex-direction: row;
+  }
+//   login-form::part(input){
+//     background-color: rgb(213, 213, 213);
+//     width: 300px;
+//     height: 1.5em;
+//     font-size: 2em;
+//   }
+//   login-form::part(log_in_button){
+//     background-color: rgb(203, 218, 255);
+//     width: 300px;
+//     // margin: 1em;
+//     height: 1.5em;
+//     font-size: 2em;
+//   }
+//   login-form::part(login_error_container){
+//     // background-color: rgb(213, 213, 213);
+//     // width: 300px;
+//     // margin: 1em;
+//     padding: 1em;
+//     height: 1em;
+//     // font-size: em;
+//   }
